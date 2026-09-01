@@ -1715,36 +1715,36 @@ body {
   position: relative;
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 2.5rem;
+.contact-card-wrapper {
+  max-width: 780px;
+  margin: 0 auto;
 }
 
-.contact-info-card, .contact-form-card {
-  padding: 2.5rem;
+.contact-info-card {
+  padding: 3rem 2.5rem;
 }
 
-.contact-card-title, .form-title {
+.contact-card-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
 .contact-card-desc {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
   line-height: 1.7;
 }
 
 .contact-methods {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
 }
 
 .contact-item {
@@ -1753,16 +1753,18 @@ body {
   gap: 1.1rem;
   text-decoration: none;
   color: inherit;
-  padding: 0.8rem 1rem;
+  padding: 1rem 1.25rem;
   border-radius: var(--radius-md);
-  border: 1px solid transparent;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
   transition: all var(--transition-fast);
 }
 
 .contact-item:hover {
-  background: var(--bg-secondary);
-  border-color: var(--border-color);
-  transform: translateX(4px);
+  background: var(--bg-card-hover);
+  border-color: var(--border-highlight);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
 }
 
 .contact-icon {
@@ -1790,8 +1792,11 @@ body {
 }
 
 .contact-socials {
-  padding-top: 1.5rem;
+  padding-top: 1.75rem;
   border-top: 1px dashed var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .socials-title {
@@ -1806,7 +1811,8 @@ body {
 
 .social-icons {
   display: flex;
-  gap: 0.75rem;
+  justify-content: center;
+  gap: 0.85rem;
 }
 
 .social-btn {
@@ -2110,7 +2116,7 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .contact-grid {
+  .contact-methods {
     grid-template-columns: 1fr;
   }
 

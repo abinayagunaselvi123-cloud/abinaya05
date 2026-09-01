@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSkillObserver();
   initModals();
   initPhotoUpload();
-  initContactForm();
 });
 
 /* ==========================================================================
@@ -765,33 +764,7 @@ function initPhotoUpload() {
 }
 
 /* ==========================================================================
-   12. Contact Form Handler
-   ========================================================================== */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('form-submit-btn');
-
-  if (form && submitBtn) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const originalBtnHtml = submitBtn.innerHTML;
-
-      submitBtn.innerHTML = `<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>`;
-      submitBtn.disabled = true;
-
-      setTimeout(() => {
-        submitBtn.innerHTML = originalBtnHtml;
-        submitBtn.disabled = false;
-        form.reset();
-        showToast(`Thank you, ${name}! Your message has been sent successfully. ✨`);
-      }, 1000);
-    });
-  }
-}
-
-/* ==========================================================================
-   13. Toast Notification Helper
+   12. Toast Notification Helper
    ========================================================================== */
 function showToast(message) {
   const toast = document.getElementById('toast');

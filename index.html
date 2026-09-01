@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blush">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abinaya K | Portfolio & Web Developer</title>
+  <meta name="description" content="Portfolio of Abinaya K - B.Sc Computer Science Student, Web Application Developer, and Data Science Enthusiast." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ambient Interactive Flying Birds Canvas -->
+  <canvas id="birds-canvas"></canvas>
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- Fairy Sparkle Cursor Trail -->
+  <div id="cursor-glow"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bird"><i class="fa-solid fa-dove"></i></span>
+        <span class="logo-text">Abinaya<span class="logo-dot">.</span></span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> About</a>
+        <a href="#internship" class="nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a>
+        <a href="#skills" class="nav-link"><i class="fa-solid fa-code"></i> Skills</a>
+        <a href="#projects" class="nav-link"><i class="fa-solid fa-layer-group"></i> Projects</a>
+        <a href="#certifications" class="nav-link"><i class="fa-solid fa-award"></i> Certifications</a>
+        <a href="#education" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+        <a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Ambient Sound Toggle -->
+        <button id="sound-toggle" class="icon-btn" title="Toggle Gentle Nature Birds Ambient" aria-label="Toggle sound">
+          <i class="fa-solid fa-volume-xmark" id="sound-icon"></i>
+        </button>
+        <!-- Theme Selector -->
+        <button id="theme-toggle" class="icon-btn" title="Switch Theme Palette" aria-label="Toggle theme">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </button>
+        <a href="#contact" class="btn btn-sm btn-primary hide-mobile">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-paper-plane"></i>
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+
+      <div class="container hero-container">
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-sparkle"><i class="fa-solid fa-feather-pointed"></i></span>
+            <span>Welcome to my digital space</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text font-serif">Abinaya K</span>
+            <span class="waving-dove"><i class="fa-solid fa-dove"></i></span>
+          </h1>
+
+          <div class="hero-roles">
+            <span class="role-static">I am a </span>
+            <span class="role-dynamic" id="typed-roles"></span>
+            <span class="cursor-blink">|</span>
+          </div>
+
+          <p class="hero-desc">
+            B.Sc Computer Science student with hands-on internship experience in <strong>web application development</strong> using <strong>JavaScript</strong>. Familiar with front-end development, database concepts, SQL, and DBMS. Skilled in Microsoft Excel and Canva, with a strong interest in learning new technologies and developing practical software solutions.
+          </p>
+
+          <div class="hero-quick-info">
+            <div class="info-pill">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Morapur, Dharmapuri</span>
+            </div>
+            <a href="tel:+916383101972" class="info-pill info-pill-link">
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 6383101972</span>
+            </a>
+            <div class="info-pill">
+              <i class="fa-solid fa-language"></i>
+              <span>Tamil &amp; English</span>
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">
+              <span>View Projects</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn-glass">
+              <span>Get In Touch</span>
+              <i class="fa-solid fa-envelope-open-text"></i>
+            </a>
+            <button id="quick-resume-btn" class="btn btn-outline" title="View Print-Ready Resume">
+              <i class="fa-solid fa-file-pdf"></i>
+              <span>Resume</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual / Profile Photo -->
+        <div class="hero-visual">
+          <div class="profile-card-wrapper">
+            <!-- Decorative Floating Elements -->
+            <div class="floating-badge badge-top-right">
+              <div class="badge-icon"><i class="fa-solid fa-code"></i></div>
+              <div class="badge-info">
+                <span class="badge-title">JavaScript</span>
+                <span class="badge-sub">Web Developer</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-bottom-left">
+              <div class="badge-icon"><i class="fa-solid fa-database"></i></div>
+              <div class="badge-info">
+                <span class="badge-title">SQL &amp; DBMS</span>
+                <span class="badge-sub">Data Solutions</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-top-left">
+              <div class="badge-icon"><i class="fa-solid fa-dove"></i></div>
+              <div class="badge-info">
+                <span class="badge-title">Creative &amp; Agile</span>
+                <span class="badge-sub">Quick Learner</span>
+              </div>
+            </div>
+
+            <!-- Profile Card -->
+            <div class="profile-card" id="profile-card">
+              <div class="profile-glow-ring"></div>
+              <div class="profile-image-container">
+                <div class="floral-wreath"></div>
+                <img src="assets/profile.jpg" alt="Abinaya K" id="main-profile-img" class="main-profile-img" />
+              </div>
+
+              <div class="profile-details">
+                <h3 class="profile-name">Abinaya K</h3>
+                <p class="profile-tagline">B.Sc Computer Science Student</p>
+                <div class="profile-college-chip">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <span>Kongunadu Arts &amp; Science College</span>
+                </div>
+                
+                <div class="profile-social-pills">
+                  <a href="tel:+916383101972" class="social-pill" title="Call Me"><i class="fa-solid fa-phone"></i></a>
+                  <a href="#contact" class="social-pill" title="Send Message"><i class="fa-solid fa-envelope"></i></a>
+                  <a href="mailto:abinaya.dev.contact@gmail.com" class="social-pill" title="Email"><i class="fa-solid fa-at"></i></a>
+                  <a href="#projects" class="social-pill" title="Portfolio Projects"><i class="fa-solid fa-folder-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave Bottom Divider -->
+      <div class="section-divider-bottom">
+        <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
+          <path d="M0,32L60,42.7C120,53,240,75,360,80C480,85,600,75,720,58.7C840,43,960,21,1080,21.3C1200,21,1320,43,1380,53.3L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z" fill="var(--bg-secondary)"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-feather"></i> Discover My Story</span>
+          <h2 class="section-title">About <span class="gradient-text font-serif">Me</span></h2>
+          <div class="floral-divider">
+            <span class="line"></span>
+            <i class="fa-solid fa-spa"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass-panel">
+            <div class="about-header">
+              <div class="about-avatar-mini">
+                <img src="assets/profile.jpg" alt="Abinaya K" class="about-thumb-img" />
+              </div>
+              <div>
+                <h3 class="about-name">Abinaya K</h3>
+                <span class="about-role-sub">Final Year B.Sc Computer Science Student</span>
+              </div>
+            </div>
+
+            <p class="about-text">
+              I am an enthusiastic and dedicated <strong>B.Sc Computer Science student</strong> currently completing my final year at <strong>Kongunadu Arts and Science College, Coimbatore</strong>.
+            </p>
+            <p class="about-text">
+              With a solid foundation in front-end development, SQL database design, and hands-on internship experience in web application development using <strong>JavaScript</strong> at <strong>NandGate IT Services Private Limited</strong>, I strive to build intuitive, high-performance web applications that merge functionality with aesthetic elegance.
+            </p>
+            <p class="about-text">
+              Beyond coding, I am skilled in <strong>Microsoft Excel</strong> for structured data management, <strong>Canva</strong> for UI &amp; visual design, and have completed certifications from global leaders including <strong>Google</strong> and <strong>IBM</strong> in Data Science and Artificial Intelligence.
+            </p>
+
+            <div class="languages-box">
+              <h4 class="languages-title"><i class="fa-solid fa-comments"></i> Languages Known</h4>
+              <div class="lang-tags">
+                <div class="lang-tag">
+                  <span class="lang-name">Tamil</span>
+                  <span class="lang-level">Native / Fluent</span>
+                  <div class="lang-bar"><span style="width: 100%;"></span></div>
+                </div>
+                <div class="lang-tag">
+                  <span class="lang-name">English</span>
+                  <span class="lang-level">Professional Working</span>
+                  <div class="lang-bar"><span style="width: 90%;"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats & Highlights -->
+          <div class="about-highlights-wrapper">
+            <div class="highlight-card glass-panel">
+              <div class="hl-icon bg-rose"><i class="fa-solid fa-briefcase"></i></div>
+              <div class="hl-content">
+                <h4 class="hl-number">Internship</h4>
+                <p class="hl-desc">NandGate IT Services Pvt Ltd (JavaScript Web Dev)</p>
+              </div>
+            </div>
+
+            <div class="highlight-card glass-panel">
+              <div class="hl-icon bg-lavender"><i class="fa-solid fa-certificate"></i></div>
+              <div class="hl-content">
+                <h4 class="hl-number">4+ Certifications</h4>
+                <p class="hl-desc">Google &amp; IBM (AI, Data Science, SQL)</p>
+              </div>
+            </div>
+
+            <div class="highlight-card glass-panel">
+              <div class="hl-icon bg-peach"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="hl-content">
+                <h4 class="hl-number">Final Year</h4>
+                <p class="hl-desc">Kongunadu Arts and Science College, Coimbatore</p>
+              </div>
+            </div>
+
+            <div class="highlight-card glass-panel">
+              <div class="hl-icon bg-mint"><i class="fa-solid fa-heart"></i></div>
+              <div class="hl-content">
+                <h4 class="hl-number">Focus Area</h4>
+                <p class="hl-desc">Web Apps, Database Systems &amp; Modern UI</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERNSHIP & EXPERIENCE SECTION -->
+    <section class="section internship-section" id="internship">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-briefcase"></i> Practical Industry Exposure</span>
+          <h2 class="section-title">Work <span class="gradient-text font-serif">Experience</span></h2>
+          <div class="floral-divider">
+            <span class="line"></span>
+            <i class="fa-solid fa-dove"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-track"></div>
+
+          <div class="timeline-item glass-panel">
+            <div class="timeline-dot">
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="company-brand">
+                  <div class="company-logo">NG</div>
+                  <div>
+                    <h3 class="role-title">Web Application Development Intern</h3>
+                    <h4 class="company-name">NandGate IT Services Private Limited</h4>
+                  </div>
+                </div>
+                <div class="timeline-badge">
+                  <i class="fa-regular fa-calendar"></i>
+                  <span>May 2026 – June 2026</span>
+                </div>
+              </div>
+
+              <div class="timeline-body">
+                <p class="timeline-summary">
+                  Engaged in hands-on web application development using JavaScript, gaining vital industry experience in end-to-end frontend and backend development workflows.
+                </p>
+                <ul class="timeline-points">
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Worked on web application development using <strong>JavaScript</strong> to engineer dynamic UI workflows and responsive features.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Gained exposure to <strong>front-end and back-end concepts</strong>, database integration, and software development practices.</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>Completed assigned tasks with <strong>professionalism, meticulous attention to detail, and eagerness to learn</strong>.</span>
+                  </li>
+                </ul>
+
+                <div class="timeline-tags">
+                  <span class="tag"><i class="fa-brands fa-js"></i> JavaScript</span>
+                  <span class="tag"><i class="fa-solid fa-code"></i> Front-End Dev</span>
+                  <span class="tag"><i class="fa-solid fa-database"></i> Database Integration</span>
+                  <span class="tag"><i class="fa-solid fa-cubes"></i> Software Practices</span>
+                  <span class="tag"><i class="fa-solid fa-users"></i> Team Collaboration</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS & EXPERTISE SECTION -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-wand-magic-sparkles"></i> Capabilities &amp; Strengths</span>
+          <h2 class="section-title">Technical &amp; Soft <span class="gradient-text font-serif">Skills</span></h2>
+          <div class="floral-divider">
+            <span class="line"></span>
+            <i class="fa-solid fa-sparkles"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Technical Skills -->
+          <div class="skill-category-card glass-panel">
+            <div class="category-header">
+              <div class="cat-icon bg-rose"><i class="fa-solid fa-code"></i></div>
+              <div>
+                <h3 class="cat-title">Technical Skills</h3>
+                <p class="cat-subtitle">Programming, databases &amp; core computer science</p>
+              </div>
+            </div>
+
+            <div class="skill-items">
+              <div class="skill-bar-wrap">
+                <div class="skill-info">
+                  <span class="skill-name"><i class="fa-brands fa-js"></i> JavaScript</span>
+                  <span class="skill-pct">85%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="--target-width: 85%;"></div></div>
+              </div>
+
+              <div class="skill-bar-wrap">
+                <div class="skill-info">
+                  <span class="skill-name"><i class="fa-solid fa-database"></i> SQL</span>
+                  <span class="skill-pct">88%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="--target-width: 88%;"></div></div>
+              </div>
+
+              <div class="skill-bar-wrap">
+                <div class="skill-info">
+                  <span class="skill-name"><i class="fa-solid fa-server"></i> DBMS (Database Management)</span>
+                  <span class="skill-pct">82%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="--target-width: 82%;"></div></div>
+              </div>
+
+              <div class="skill-bar-wrap">
+                <div class="skill-info">
+                  <span class="skill-name"><i class="fa-brands fa-html5"></i> Web Development (HTML5 &amp; CSS3)</span>
+                  <span class="skill-pct">90%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="--target-width: 90%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools & Software -->
+          <div class="skill-category-card glass-panel">
+            <div class="category-header">
+              <div class="cat-icon bg-lavender"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+              <div>
+                <h3 class="cat-title">Tools &amp; Productivity</h3>
+                <p class="cat-subtitle">Spreadsheet analytics, design &amp; essentials</p>
+              </div>
+            </div>
+
+            <div class="skill-items">
+              <div class="skill-bar-wrap">
+                <div class="skill-info">
+                  <span class="skill-name"><i class="fa-solid fa-file-excel"></i> Microsoft Excel</span>
+                  <span class="skill-pct">90%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="--target-width: 90%;"></div></div>
+              </div>
+
+              <div class="skill-bar-wrap">
+                <div class="skill-info">
+                  <span class="skill-name"><i class="fa-solid fa-palette"></i> Canva</span>
+                  <span class="skill-pct">92%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="--target-width: 92%;"></div></div>
+              </div>
+
+              <div class="skill-bar-wrap">
+                <div class="skill-info">
+                  <span class="skill-name"><i class="fa-solid fa-chart-line"></i> Data Analysis Fundamentals</span>
+                  <span class="skill-pct">80%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="--target-width: 80%;"></div></div>
+              </div>
+
+              <div class="skill-bar-wrap">
+                <div class="skill-info">
+                  <span class="skill-name"><i class="fa-brands fa-git-alt"></i> Git &amp; Code Management</span>
+                  <span class="skill-pct">78%</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="--target-width: 78%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="skill-category-card glass-panel full-width">
+            <div class="category-header">
+              <div class="cat-icon bg-peach"><i class="fa-solid fa-heart"></i></div>
+              <div>
+                <h3 class="cat-title">Soft Skills &amp; Strengths</h3>
+                <p class="cat-subtitle">Interpersonal excellence, agility, and workplace values</p>
+              </div>
+            </div>
+
+            <div class="soft-skills-grid">
+              <div class="soft-skill-pill">
+                <div class="ss-icon"><i class="fa-solid fa-comments"></i></div>
+                <div class="ss-text">
+                  <h5>Communication</h5>
+                  <p>Expressing technical concepts clearly in verbal and written formats.</p>
+                </div>
+              </div>
+
+              <div class="soft-skill-pill">
+                <div class="ss-icon"><i class="fa-solid fa-people-group"></i></div>
+                <div class="ss-text">
+                  <h5>Teamwork</h5>
+                  <p>Collaborating effectively within engineering teams to achieve goals.</p>
+                </div>
+              </div>
+
+              <div class="soft-skill-pill">
+                <div class="ss-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                <div class="ss-text">
+                  <h5>Problem Solving</h5>
+                  <p>Breaking down complex tasks into manageable, logical solutions.</p>
+                </div>
+              </div>
+
+              <div class="soft-skill-pill">
+                <div class="ss-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="ss-text">
+                  <h5>Time Management</h5>
+                  <p>Prioritizing tasks systematically to meet deadlines reliably.</p>
+                </div>
+              </div>
+
+              <div class="soft-skill-pill">
+                <div class="ss-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="ss-text">
+                  <h5>Quick Learning</h5>
+                  <p>Rapidly adopting emerging software tools, APIs, and frameworks.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-laptop-code"></i> Portfolio Showcase</span>
+          <h2 class="section-title">Featured <span class="gradient-text font-serif">Projects</span></h2>
+          <div class="floral-divider">
+            <span class="line"></span>
+            <i class="fa-solid fa-seedling"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="projects-filter">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="web">Web Application</button>
+          <button class="filter-btn" data-filter="sql">SQL &amp; DBMS</button>
+          <button class="filter-btn" data-filter="design">Design &amp; Tools</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Web Application Development -->
+          <div class="project-card glass-panel" data-category="web">
+            <div class="project-banner bg-gradient-rose">
+              <div class="project-icon-float"><i class="fa-brands fa-js"></i></div>
+              <div class="project-badge">Featured Web Project</div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
+                <span class="project-tag">Front-End</span>
+              </div>
+              <h3 class="project-title">Web Application Development</h3>
+              <p class="project-description">
+                Developed and worked on interactive web application features using JavaScript, focusing on modern user interface design, DOM manipulation, dynamic events, and responsive styling.
+              </p>
+              <div class="project-highlights">
+                <span><i class="fa-solid fa-check"></i> Modular JavaScript architecture</span>
+                <span><i class="fa-solid fa-check"></i> Responsive mobile-first layout</span>
+                <span><i class="fa-solid fa-check"></i> Dynamic event handling &amp; validation</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project="web-app">
+                  <span>Explore Details</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: SQL Database Practice -->
+          <div class="project-card glass-panel" data-category="sql">
+            <div class="project-banner bg-gradient-lavender">
+              <div class="project-icon-float"><i class="fa-solid fa-database"></i></div>
+              <div class="project-badge">Database System</div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag"><i class="fa-solid fa-database"></i> SQL</span>
+                <span class="project-tag">DBMS</span>
+              </div>
+              <h3 class="project-title">SQL Database Practice</h3>
+              <p class="project-description">
+                Worked extensively with SQL queries and database concepts, structuring relational tables, writing nested subqueries, performing multi-table joins, and ensuring relational database integrity.
+              </p>
+              <div class="project-highlights">
+                <span><i class="fa-solid fa-check"></i> Relational database normalization</span>
+                <span><i class="fa-solid fa-check"></i> Complex JOINs, views &amp; aggregations</span>
+                <span><i class="fa-solid fa-check"></i> Data querying &amp; schema design</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project="sql-db">
+                  <span>Explore Details</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: AI & Data Science Hub -->
+          <div class="project-card glass-panel" data-category="web">
+            <div class="project-banner bg-gradient-peach">
+              <div class="project-icon-float"><i class="fa-solid fa-brain"></i></div>
+              <div class="project-badge">AI &amp; Data Science</div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag">IBM &amp; Google AI</span>
+                <span class="project-tag">Data Science</span>
+              </div>
+              <h3 class="project-title">AI &amp; Data Science Explorations</h3>
+              <p class="project-description">
+                Applied core concepts from IBM Generative AI and Google Data Science certifications to explore prompt engineering, AI fundamentals, exploratory data analysis, and predictive modeling basics.
+              </p>
+              <div class="project-highlights">
+                <span><i class="fa-solid fa-check"></i> Generative AI &amp; LLM workflows</span>
+                <span><i class="fa-solid fa-check"></i> Data visualization &amp; analysis metrics</span>
+                <span><i class="fa-solid fa-check"></i> Machine learning foundational principles</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project="ai-data">
+                  <span>Explore Details</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Visual Design & Canva Hub -->
+          <div class="project-card glass-panel" data-category="design">
+            <div class="project-banner bg-gradient-mint">
+              <div class="project-icon-float"><i class="fa-solid fa-palette"></i></div>
+              <div class="project-badge">Creative &amp; Analytics</div>
+            </div>
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag"><i class="fa-solid fa-palette"></i> Canva</span>
+                <span class="project-tag"><i class="fa-solid fa-file-excel"></i> MS Excel</span>
+              </div>
+              <h3 class="project-title">Canva Visual Design &amp; Excel Analytics</h3>
+              <p class="project-description">
+                Created aesthetic graphic materials and UI mockups using Canva, complemented by structured Excel spreadsheets utilizing advanced formulas, pivot tables, and automated data tracking.
+              </p>
+              <div class="project-highlights">
+                <span><i class="fa-solid fa-check"></i> Creative UI layouts &amp; presentation decks</span>
+                <span><i class="fa-solid fa-check"></i> Excel data formulas (VLOOKUP, SUMIFS)</span>
+                <span><i class="fa-solid fa-check"></i> Visual reporting &amp; dashboard charts</span>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-primary project-modal-trigger" data-project="canva-design">
+                  <span>Explore Details</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section class="section certs-section" id="certifications">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-award"></i> Verified Credentials</span>
+          <h2 class="section-title">Honors &amp; <span class="gradient-text font-serif">Certifications</span></h2>
+          <div class="floral-divider">
+            <span class="line"></span>
+            <i class="fa-solid fa-ribbon"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="certs-grid">
+          <!-- Cert 1: IBM Gen AI -->
+          <div class="cert-card glass-panel">
+            <div class="cert-provider-badge ibm-badge">
+              <span class="provider-logo">IBM</span>
+              <span class="cert-type">Specialized AI</span>
+            </div>
+            <div class="cert-icon-wrapper">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <h3 class="cert-title">Generative AI for Data Scientist</h3>
+            <p class="cert-issuer">Issued by <strong>IBM</strong></p>
+            <p class="cert-desc">
+              Mastery of generative AI fundamentals, Large Language Models (LLMs), prompt crafting, and applying generative models across data analysis pipelines.
+            </p>
+            <div class="cert-footer">
+              <span class="cert-status"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+              <button class="cert-preview-btn" data-cert="ibm-genai">View Details</button>
+            </div>
+          </div>
+
+          <!-- Cert 2: IBM AI Fundamentals -->
+          <div class="cert-card glass-panel">
+            <div class="cert-provider-badge ibm-badge">
+              <span class="provider-logo">IBM</span>
+              <span class="cert-type">Core Certification</span>
+            </div>
+            <div class="cert-icon-wrapper">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h3 class="cert-title">Artificial Intelligence Fundamentals</h3>
+            <p class="cert-issuer">Issued by <strong>IBM</strong></p>
+            <p class="cert-desc">
+              Foundational knowledge in machine learning algorithms, deep neural network principles, computer vision, natural language processing, and AI ethics.
+            </p>
+            <div class="cert-footer">
+              <span class="cert-status"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+              <button class="cert-preview-btn" data-cert="ibm-ai">View Details</button>
+            </div>
+          </div>
+
+          <!-- Cert 3: Intro to SQL -->
+          <div class="cert-card glass-panel">
+            <div class="cert-provider-badge db-badge">
+              <span class="provider-logo">SQL</span>
+              <span class="cert-type">Database Skill</span>
+            </div>
+            <div class="cert-icon-wrapper">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <h3 class="cert-title">Introduction to SQL</h3>
+            <p class="cert-issuer">Database Specialization</p>
+            <p class="cert-desc">
+              Practical proficiency in querying relational databases, filtering records, aggregations, relational joins, table structure manipulation, and data extraction.
+            </p>
+            <div class="cert-footer">
+              <span class="cert-status"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+              <button class="cert-preview-btn" data-cert="sql-cert">View Details</button>
+            </div>
+          </div>
+
+          <!-- Cert 4: Google Data Science -->
+          <div class="cert-card glass-panel">
+            <div class="cert-provider-badge google-badge">
+              <span class="provider-logo"><i class="fa-brands fa-google"></i> Google</span>
+              <span class="cert-type">Specialization</span>
+            </div>
+            <div class="cert-icon-wrapper">
+              <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <h3 class="cert-title">Foundation of Data Science</h3>
+            <p class="cert-issuer">Issued by <strong>Google</strong></p>
+            <p class="cert-desc">
+              Comprehensive understanding of the data ecosystem, data cleaning, statistical evaluation, chart visualization, and translating data into actionable solutions.
+            </p>
+            <div class="cert-footer">
+              <span class="cert-status"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+              <button class="cert-preview-btn" data-cert="google-ds">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section class="section education-section" id="education">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-graduation-cap"></i> Academic Journey</span>
+          <h2 class="section-title">My <span class="gradient-text font-serif">Education</span></h2>
+          <div class="floral-divider">
+            <span class="line"></span>
+            <i class="fa-solid fa-book-open"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="education-card-wrapper">
+          <div class="education-card glass-panel">
+            <div class="edu-icon-badge">
+              <i class="fa-solid fa-university"></i>
+            </div>
+            <div class="edu-content">
+              <div class="edu-header">
+                <div>
+                  <h3 class="edu-degree">B.Sc Computer Science</h3>
+                  <h4 class="edu-college">Kongunadu Arts and Science College, Coimbatore</h4>
+                </div>
+                <div class="edu-status-badge">
+                  <i class="fa-solid fa-sparkles"></i>
+                  <span>Final Year Student</span>
+                </div>
+              </div>
+
+              <p class="edu-desc">
+                Engaged in comprehensive academic coursework covering core computer science disciplines including Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems (DBMS), Web Technologies, and Software Engineering.
+              </p>
+
+              <div class="edu-tags">
+                <span class="tag"><i class="fa-solid fa-book"></i> Web Technologies</span>
+                <span class="tag"><i class="fa-solid fa-book"></i> Database Systems</span>
+                <span class="tag"><i class="fa-solid fa-book"></i> Data Structures</span>
+                <span class="tag"><i class="fa-solid fa-book"></i> Software Engineering</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-heart"></i> Get In Touch</span>
+          <h2 class="section-title">Let's <span class="gradient-text font-serif">Connect</span></h2>
+          <div class="floral-divider">
+            <span class="line"></span>
+            <i class="fa-solid fa-paper-plane"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info Column -->
+          <div class="contact-info-card glass-panel">
+            <h3 class="contact-card-title">Reach Out to Me</h3>
+            <p class="contact-card-desc">
+              I am actively looking for exciting entry-level opportunities, internships, and collaborative software projects. Feel free to contact me directly!
+            </p>
+
+            <div class="contact-methods">
+              <a href="tel:+916383101972" class="contact-item">
+                <div class="contact-icon bg-rose"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <span class="contact-label">Call / Phone</span>
+                  <span class="contact-value">+91 6383101972</span>
+                </div>
+              </a>
+
+              <div class="contact-item">
+                <div class="contact-icon bg-lavender"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <span class="contact-label">Location</span>
+                  <span class="contact-value">Morapur, Dharmapuri, Tamil Nadu</span>
+                </div>
+              </div>
+
+              <a href="mailto:abinaya.dev.contact@gmail.com" class="contact-item">
+                <div class="contact-icon bg-peach"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <span class="contact-label">Email Address</span>
+                  <span class="contact-value">abinaya.dev.contact@gmail.com</span>
+                </div>
+              </a>
+
+              <div class="contact-item">
+                <div class="contact-icon bg-mint"><i class="fa-solid fa-language"></i></div>
+                <div>
+                  <span class="contact-label">Languages</span>
+                  <span class="contact-value">Tamil (Native), English (Fluent)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="contact-socials">
+              <span class="socials-title">Quick Connect</span>
+              <div class="social-icons">
+                <a href="tel:+916383101972" class="social-btn" title="Call Now"><i class="fa-solid fa-phone"></i></a>
+                <a href="mailto:abinaya.dev.contact@gmail.com" class="social-btn" title="Send Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="#projects" class="social-btn" title="View Projects"><i class="fa-solid fa-laptop-code"></i></a>
+                <a href="#about" class="social-btn" title="About Abinaya"><i class="fa-solid fa-user"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form Column -->
+          <div class="contact-form-card glass-panel">
+            <form id="contact-form" class="contact-form">
+              <h3 class="form-title">Send a Message</h3>
+              
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-user input-icon"></i>
+                  <input type="text" id="name" name="name" placeholder="E.g., Priya Sharma" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-envelope input-icon"></i>
+                  <input type="email" id="email" name="email" placeholder="E.g., priya@example.com" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-tag input-icon"></i>
+                  <input type="text" id="subject" name="subject" placeholder="Project collaboration / Job Opportunity" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <div class="input-wrapper">
+                  <textarea id="message" name="message" rows="4" placeholder="Hi Abinaya, I would love to connect with you regarding..." required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
+                <span>Send Message</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Project / Resume Modals -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-card glass-panel" id="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-content" id="modal-content">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check toast-icon"></i>
+    <span class="toast-message" id="toast-message">Message sent successfully!</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#hero" class="footer-logo">
+          <span class="logo-bird"><i class="fa-solid fa-dove"></i></span>
+          <span>Abinaya K</span>
+        </a>
+        <p class="footer-tagline">B.Sc Computer Science • Web Developer • Lifelong Learner</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#internship">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Crafted with elegance, gentle birds &amp; passion &copy; 2026 Abinaya K. All rights reserved.</p>
+        <a href="#hero" class="back-to-top" title="Fly back to top">
+          <i class="fa-solid fa-chevron-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

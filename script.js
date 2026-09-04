@@ -13,6 +13,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initIntroScreen();
   initNavbar();
   initTypingEffect();
   initBirdsCanvas();
@@ -24,7 +25,62 @@ document.addEventListener('DOMContentLoaded', () => {
   initSkillObserver();
   initModals();
   initPhotoUpload();
+  initScrollReveal();
+  initTiltEffect();
+  initClickSparkles();
+  initHomeLoveEffects();
 });
+
+/* ==========================================================================
+   0. 3-Second Feminine Animated Intro Screen
+   ========================================================================== */
+function initIntroScreen() {
+  const intro = document.getElementById('intro-screen');
+  const skipBtn = document.getElementById('intro-skip-btn');
+  const replayBtn = document.getElementById('intro-replay-btn');
+  if (!intro) return;
+
+  let introTimeout = null;
+
+  function startIntro() {
+    intro.classList.remove('hide');
+    document.body.style.overflow = 'hidden';
+
+    // Reset progress bar animation
+    const progressBar = intro.querySelector('.intro-progress-bar');
+    if (progressBar) {
+      progressBar.style.animation = 'none';
+      progressBar.offsetHeight; // trigger reflow
+      progressBar.style.animation = 'intro-fill-bar 3s linear forwards';
+    }
+
+    clearTimeout(introTimeout);
+    introTimeout = setTimeout(dismissIntro, 3000);
+  }
+
+  function dismissIntro() {
+    clearTimeout(introTimeout);
+    intro.classList.add('hide');
+    document.body.style.overflow = '';
+  }
+
+  // Start on initial page load
+  startIntro();
+
+  // Skip button click
+  if (skipBtn) {
+    skipBtn.addEventListener('click', dismissIntro);
+  }
+
+  // Replay button click
+  if (replayBtn) {
+    replayBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      startIntro();
+      showToast('Replaying 3-second intro ✨');
+    });
+  }
+}
 
 /* ==========================================================================
    1. Navigation & Scroll Handling
@@ -777,4 +833,176 @@ function showToast(message) {
   setTimeout(() => {
     toast.classList.remove('show');
   }, 3500);
+}
+
+/* ==========================================================================
+   13. Scroll Reveal Stagger Animations
+   ========================================================================== */
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.glass-panel, .timeline-item, .project-card, .cert-card, .highlight-card, .education-card');
+  elements.forEach(el => el.classList.add('reveal'));
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+  elements.forEach(el => observer.observe(el));
+}
+
+/* ==========================================================================
+   14. Card 3D Tilt Micro-Interaction
+   ========================================================================== */
+function initTiltEffect() {
+  if (window.innerWidth < 992) return;
+  const cards = document.querySelectorAll('.project-card, .cert-card, .profile-card, .highlight-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+/* ==========================================================================
+   15. Interactive Click Sparkle Burst Effect
+   ========================================================================== */
+function initClickSparkles() {
+  const symbols = ['✦', '🌸', '✨', '•', '✧'];
+
+  window.addEventListener('click', e => {
+    if (e.target.classList.contains('modal-overlay')) return;
+
+    for (let i = 0; i < 6; i++) {
+      const sparkle = document.createElement('span');
+      sparkle.className = 'click-sparkle';
+      sparkle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      
+      const angle = (Math.PI * 2 * i) / 6 + (Math.random() * 0.4 - 0.2);
+      const distance = Math.random() * 45 + 25;
+      const dx = `${Math.cos(angle) * distance}px`;
+      const dy = `${Math.sin(angle) * distance}px`;
+
+      sparkle.style.left = `${e.clientX}px`;
+      sparkle.style.top = `${e.clientY}px`;
+      sparkle.style.setProperty('--dx', dx);
+      sparkle.style.setProperty('--dy', dy);
+      sparkle.style.color = Math.random() > 0.5 ? 'var(--accent-rose)' : 'var(--accent-lavender)';
+
+      document.body.appendChild(sparkle);
+
+      setTimeout(() => {
+        sparkle.remove();
+      }, 750);
+    }
+  });
+}
+
+/* ==========================================================================
+   16. Home Page Floating Love Hearts & Interactive Reaction
+   ========================================================================== */
+function initHomeLoveEffects() {
+  const container = document.getElementById('hero-love-particles');
+  const loveBtn = document.getElementById('hero-love-btn');
+  const loveCount = document.getElementById('love-count');
+  const heartEmojis = ['💖', '💕', '💗', '🤍', '🌸', '✨'];
+
+  // Load saved love count
+  let count = parseInt(localStorage.getItem('abinaya_love_count')) || 128;
+  if (loveCount) loveCount.textContent = count;
+
+  // Ambient floating heart generator on home page
+  if (container) {
+    function spawnAmbientHeart() {
+      if (document.hidden) return;
+      const heart = document.createElement('span');
+      heart.className = 'floating-love-heart';
+      heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+
+      const startLeft = Math.random() * 95 + 2.5;
+      const size = Math.random() * 14 + 18;
+      const duration = Math.random() * 3 + 5;
+      const wobble = `${(Math.random() - 0.5) * 80}px`;
+      const rot = `${(Math.random() - 0.5) * 45}deg`;
+
+      heart.style.left = `${startLeft}%`;
+      heart.style.setProperty('--heart-size', `${size}px`);
+      heart.style.setProperty('--heart-duration', `${duration}s`);
+      heart.style.setProperty('--heart-wobble', wobble);
+      heart.style.setProperty('--heart-rot', rot);
+
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+
+    // Spawn ambient hearts every 1.6 seconds
+    setInterval(spawnAmbientHeart, 1600);
+    // Initial batch
+    for (let i = 0; i < 4; i++) {
+      setTimeout(spawnAmbientHeart, i * 400);
+    }
+  }
+
+  // Interactive "Send Love" Button Fountain Burst
+  if (loveBtn) {
+    loveBtn.addEventListener('click', e => {
+      count++;
+      if (loveCount) loveCount.textContent = count;
+      localStorage.setItem('abinaya_love_count', count);
+
+      // Button micro-bounce
+      loveBtn.style.transform = 'scale(1.2)';
+      setTimeout(() => { loveBtn.style.transform = ''; }, 220);
+
+      // Fountain burst of hearts
+      const rect = loveBtn.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top;
+
+      for (let i = 0; i < 14; i++) {
+        const heart = document.createElement('span');
+        heart.className = 'click-sparkle';
+        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+
+        const angle = Math.PI * (Math.random() * 1.1 + 0.95); // upwards arc
+        const distance = Math.random() * 90 + 50;
+        const dx = `${Math.cos(angle) * distance}px`;
+        const dy = `${Math.sin(angle) * distance - 40}px`;
+
+        heart.style.left = `${originX}px`;
+        heart.style.top = `${originY}px`;
+        heart.style.fontSize = `${Math.random() * 10 + 20}px`;
+        heart.style.setProperty('--dx', dx);
+        heart.style.setProperty('--dy', dy);
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 800);
+      }
+
+      showToast('Thank you for sending love! 💖🌸');
+    });
+  }
 }

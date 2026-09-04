@@ -18,6 +18,47 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- 3-Second Feminine Animated Intro Screen -->
+  <div id="intro-screen" class="intro-screen">
+    <div class="intro-bg-glow"></div>
+    <div class="intro-particles">
+      <span class="intro-sparkle sp-1">✦</span>
+      <span class="intro-sparkle sp-2">🌸</span>
+      <span class="intro-sparkle sp-3">✦</span>
+      <span class="intro-sparkle sp-4">✨</span>
+      <span class="intro-sparkle sp-5">🌸</span>
+    </div>
+    <div class="intro-birds-flock">
+      <span class="intro-bird ib-1"><i class="fa-solid fa-dove"></i></span>
+      <span class="intro-bird ib-2"><i class="fa-solid fa-dove"></i></span>
+      <span class="intro-bird ib-3"><i class="fa-solid fa-dove"></i></span>
+      <span class="intro-bird ib-4"><i class="fa-solid fa-feather-pointed"></i></span>
+    </div>
+    
+    <div class="intro-content">
+      <div class="intro-emblem">
+        <div class="intro-wreath"></div>
+        <div class="intro-bird-hero">
+          <i class="fa-solid fa-dove"></i>
+        </div>
+      </div>
+
+      <span class="intro-subtitle">Welcome to the digital sanctuary of</span>
+      <h1 class="intro-title">
+        <span class="gradient-text font-serif">Abinaya K</span>
+      </h1>
+      <p class="intro-tagline">B.Sc Computer Science &bull; Web Developer</p>
+
+      <div class="intro-progress-container">
+        <div class="intro-progress-bar"></div>
+      </div>
+    </div>
+
+    <button id="intro-skip-btn" class="intro-skip-btn" title="Skip Intro">
+      <span>Skip</span> <i class="fa-solid fa-forward-step"></i>
+    </button>
+  </div>
+
   <!-- Ambient Interactive Flying Birds Canvas -->
   <canvas id="birds-canvas"></canvas>
   <canvas id="petals-canvas"></canvas>
@@ -45,6 +86,10 @@
       </nav>
 
       <div class="nav-actions">
+        <!-- Replay Intro Button -->
+        <button id="intro-replay-btn" class="icon-btn" title="Replay 3s Intro" aria-label="Replay intro">
+          <i class="fa-solid fa-play"></i>
+        </button>
         <!-- Ambient Sound Toggle -->
         <button id="sound-toggle" class="icon-btn" title="Toggle Gentle Nature Birds Ambient" aria-label="Toggle sound">
           <i class="fa-solid fa-volume-xmark" id="sound-icon"></i>
@@ -74,17 +119,21 @@
         <div class="shape shape-3"></div>
       </div>
 
+      <!-- Floating Love Hearts Background Layer -->
+      <div class="hero-love-particles" id="hero-love-particles"></div>
+
       <div class="container hero-container">
         <!-- Left Hero Content -->
         <div class="hero-content">
           <div class="hero-badge">
-            <span class="badge-sparkle"><i class="fa-solid fa-feather-pointed"></i></span>
-            <span>Welcome to my digital space</span>
+            <span class="badge-sparkle"><i class="fa-solid fa-heart"></i></span>
+            <span>Welcome to my digital sanctuary</span>
           </div>
 
           <h1 class="hero-title">
             Hi, I'm <span class="gradient-text font-serif">Abinaya K</span>
             <span class="waving-dove"><i class="fa-solid fa-dove"></i></span>
+            <span class="hero-heart-accent">💖</span>
           </h1>
 
           <div class="hero-roles">
@@ -121,6 +170,10 @@
               <span>Get In Touch</span>
               <i class="fa-solid fa-envelope-open-text"></i>
             </a>
+            <button id="hero-love-btn" class="btn btn-love" title="Spread Love &amp; Hearts">
+              <i class="fa-solid fa-heart beat-icon"></i>
+              <span id="love-count">128</span>
+            </button>
             <button id="quick-resume-btn" class="btn btn-outline" title="View Print-Ready Resume">
               <i class="fa-solid fa-file-pdf"></i>
               <span>Resume</span>
@@ -153,6 +206,14 @@
               <div class="badge-info">
                 <span class="badge-title">Creative &amp; Agile</span>
                 <span class="badge-sub">Quick Learner</span>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-love-pulse">
+              <div class="badge-icon love-icon-bg"><i class="fa-solid fa-heart"></i></div>
+              <div class="badge-info">
+                <span class="badge-title">Made with Love</span>
+                <span class="badge-sub">Code &amp; Art</span>
               </div>
             </div>
 
